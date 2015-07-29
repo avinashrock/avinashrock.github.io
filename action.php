@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+	<?php
+		//Information regarding database
+		$username="root";
+		$password="";
+		$database="avinash";
+		$servername="localhost";
+		$connect=mysqli_connect("$servername","$username","$password","$database");
+		if(!connect){
+			echo "Error not connected to the database".mysqli_connect_error;
+		}
+		//Making empty form variables
+		$name=$mail=$pwd="";
+		if($_SERVER["REQUEST_METHOD"]== 'POST'){
+			$name=$_POST['name'];
+			$age=$_POST['age'];
+			$mail=$_POST['mail'];
+			$pwd=$_POST['pwd'];
+		$sql="INSERT INTO customers(`name`,`age`,`mail`,`password`) VALUES('$name','$age','$mail','$pwd')";
+		$query=mysqli_query($connect,$sql);
+		if($query){
+			echo "Welcome  ".$name."<br>";
+                        echo "Registered successfully";
+			
+		}
+		else{
+			echo "Not inputted";
+			break;
+		}
+	}
+	?>
+	<a href="http://localhost/xampp/login/index.php">CLICK HERE TO LOGIN</a>
+<body>
+</html>
